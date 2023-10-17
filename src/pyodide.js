@@ -301,10 +301,11 @@ import './pyodide.asm.js';
       await async function() {
           if (!IN_NODE) return;
           if (nodeUrlMod = (await import( /* webpackIgnore: true */ "url")).default, nodeFetch = fetch, nodeVmMod = (await import( /* webpackIgnore: true */ "vm")).default, nodePath = await import( /* webpackIgnore: true */ "path"), pathSep = nodePath.sep, "undefined" != typeof require) return;
+          const ws = "ws";
           const node_modules = {
               fs: await import( /* webpackIgnore: true */ "fs"),
               crypto: await import( /* webpackIgnore: true */ "crypto"),
-              ws: await import( /* webpackIgnore: true */ "ws"),
+              ws: await import( /* webpackIgnore: true */ ws),
               child_process: await import( /* webpackIgnore: true */ "child_process")
           };
           globalThis.require = function(mod) {

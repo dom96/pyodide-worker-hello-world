@@ -1,6 +1,4 @@
-// This is a (hacky) implementation of Pyodide on Cloudflare Workers.
-//
-// For more info see the readme. Licensed under MPL 2.0.
+// Hello World Example of Python running via Pyodide on Cloudflare Workers
 
 import index from './index.html';
 import "./pyodide.js";
@@ -168,25 +166,6 @@ export default {
     console.log("Received ", uri.pathname);
     switch (uri.pathname) {
       case "/":
-        return new Response(index, { headers: {
-          'Content-Type': 'text/html'
-        }});
-      case "/eval": {
-        // Implementation for the interactive portion of the pycloud site.
-        const code = await request.text();
-        const pyodide = await getPyodide();
-        await runCode(pyodide, code);
-        let b64 = "";
-        if (pyodide.FS.analyzePath("/result.png").exists) {
-          const file = pyodide.FS.readFile("/result.png", { encoding: "binary" });
-          b64 = Buffer.from(file).toString('base64');
-        }
-        return new Response(JSON.stringify({
-          "output": globalThis.PYODIDE_OUTPUT,
-          "image": b64.length > 0 ? "data:image/png;base64," + b64 : ""
-        }));
-      }
-      case "/test":
         // A simple example of how to run code directly. In this case using
         // Pillow to render an image and return it from the worker.
         const pyodide = await getPyodide();

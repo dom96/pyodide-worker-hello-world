@@ -1,6 +1,6 @@
 {
-  "name": "pycloud",
-  "version": "0.0.0",
+  "name": "{{ project-name }}",
+  "version": "1.0.0",
   "devDependencies": {
     "wrangler": "2.4.4"
   },
