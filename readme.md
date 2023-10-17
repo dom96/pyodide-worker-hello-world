@@ -8,6 +8,8 @@ Then perform these steps:
 
 - Clone repository (`git clone https://github.com/cloudflare/python-worker-hello-world`)
 - Run `npm install`
+- Run `wrangler dev` to run a local copy of your Worker
 - Update `wrangler.toml` with your project `name`, `account_id`, and `route` as required
+- Run `wrangler publish` once you are ready to upload your Worker to production
 
 Further documentation for Wrangler can be found [here](https://developers.cloudflare.com/workers/wrangler/).
